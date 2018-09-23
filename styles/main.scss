@@ -1,0 +1,40 @@
+@import "layout";
+
+.weather {
+  background-color: $darkBlue;
+  height: 100vh;
+  text-align: center;
+
+  .wrapper {
+    margin: 0 auto;
+    max-width: 414px;
+    width: 90%;
+    padding: 0 5%;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    @include tablet {
+      max-width: none;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 32px;
+  }
+
+  h2 {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  time {
+    color: #fff;
+    font-size: 12px;
+  }
+
+
+}
