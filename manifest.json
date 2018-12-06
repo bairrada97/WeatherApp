@@ -1,11 +1,11 @@
 {
-  "name": "Dyselxia App",
-  "short_name": "Dyslexia App",
-  "theme_color": "#224757",
-  "background_color": "#224757",
+  "name": "Weather App",
+  "short_name": "WAPP",
+  "theme_color": "#466883",
+  "background_color": "#538dbb",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "index.html",
+  "start_url": "/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",

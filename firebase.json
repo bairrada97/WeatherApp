@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }],
+    "headers": [{
+      "source": "**/*.@(eot|otf|ttf|ttc|woff|font|svg|css|js|jpg|jpeg|gif|png)",
+      "headers": [{
+        "key": "Access-Control-Allow-Origin",
+        "value": "max-age=31536000"
+      }]
+    }]
+  }
+}

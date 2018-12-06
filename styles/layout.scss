@@ -148,9 +148,9 @@ table {
   border-spacing: 0;
 }
 
-img {
-  width: 100%;
-}
+// img {
+//   width: 100%;
+// }
 
 a {
   text-decoration: none;
@@ -159,17 +159,18 @@ a {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-/* Font sizes */
-$font-size16: 16px;
-$font-size28: 28px;
-$font-size33: 33px;
-$font-size48: 48px;
-$font-size50: 50px; /* Font Family */
-$CaviarDreams: 'caviar_dreamsregular', sans-serif;
-$CaviarDreamsBold: 'caviar_dreamsbold', sans-serif;
-$LemonMilk: 'lemonmilkregular', sans-serif; /* Colors */
-$goldenYellow: #fae1ab;
-$darkBlue: #224757;
+/* Font sizes */ 
+
+$font-size10: 10px;
+$font-size12: 12px;
+$font-size14: 14px;
+$font-size25: 25px;
+$font-size80: 80px; /* Font Family */
+$monteserratRegular: 'montserratregular', sans-serif;
+$monteserratLight: 'montserratlight', sans-serif;
+$monteserratThin: 'montserratthin', sans-serif;
+$monteserratMedium: 'montserratmedium', sans-serif;
+$lightBlue: linear-gradient(#309DCC, #73E4EB);
 $black: #000000;
 $white: #ffffff; /*BreakPoints*/
 $min-mobile-width: 0;
@@ -182,10 +183,14 @@ $min-desktop-width: 1024px;
 $max-desktop-width: 1280px;
 
 
+@mixin typography($minVal, $maxVal, $minVw, $maxVw) {
+  font-size: calc(#{$minVal}px + #{($maxVal - $minVal)} * ((100vw - #{$minVw}px) / #{($maxVw - $minVw)}));
+}
+
 @mixin mobile {
   @media (min-width: #{$min-mobile-width}) and (max-width: #{$max-mobile-width}) {
     @content;
-  } 
+  }
 }
 @mixin tablet {
   @media (min-width: #{$min-mobile-width}) and (max-width: #{$max-tablet-width}) {

@@ -1,40 +1,290 @@
 @import "layout";
 
 .weather {
-  background-color: $darkBlue;
+  background-image: $lightBlue;
+  font-family: $monteserratLight;
+  color: $white;
   height: 100vh;
   text-align: center;
+  overflow: auto;
 
   .wrapper {
     margin: 0 auto;
-    max-width: 414px;
+    max-width: 768px;
     width: 90%;
     padding: 0 5%;
     position: relative;
     display: block;
-    overflow: hidden;
-    @include tablet {
-      max-width: none;
-      width: 100%;
-      padding: 0;
+  }
+
+  header {
+    margin-top: 10px;
+  }
+
+  &__dailyContainer,
+  &__date,
+  &__location,
+  nav {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.1);
+    @include typography(14, 18, 320, 2000);
+    color: $white;
+    width: 50%;
+    margin-right: 5px;
+    padding: 5px 20px;
+    letter-spacing: 0.5px;
+    border-radius: 1px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.5;
+
+    &.active {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.1);
+      opacity: 1;
+    }
+  }
+
+  &__search {
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 40px;
+
+    .citiesLocation {
+      width: 80%;
+      background: transparent;
+      border: 0;
+      padding-bottom: 10px;
+      outline: none;
+      color: $white;
+
+      &::placeholder {
+        color: $white;
+        opacity: 0.3;
+        text-align: left;
+        letter-spacing: 0.5px;
+        @include typography(12, 14, 320, 2000);
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0;
+    }
+
+    .arrow-right {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__date,
+  &__location {
+    font-family: $monteserratMedium;
+    @include typography(12, 14, 320, 2000);
+    margin-bottom: 5px;
+  }
+
+  &__date {
+    font-family: $monteserratLight;
+  }
+
+  &__degrees {
+    font-family: $monteserratThin;
+    font-size: $font-size80;
+    margin-bottom: 15px;
+    line-height: 98px;
+  }
+
+  &__icon {
+    max-width: 150px;
+    margin: 50px 0;
+  }
+
+  &__minMax {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__tempMax,
+  &__tempMin,
+  &__weeklyMax,
+  &__weeklyMin {
+    font-family: $monteserratRegular;
+    display: inline-block;
+    @include typography(10, 14, 320, 2000);
+  }
+
+  &__tempMin {
+    margin-right: 20px;
+  }
+
+  &__week {
+    margin-top: 10px;
+  }
+
+  &__weekContainer {
+    display: none;
+  }
+
+  &__weekList {
+    background: linear-gradient(180deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 100%);
+  }
+
+  &__weeklyItem {
+    position: relative;
+    padding: 20px 10px;
+    text-align: left;
+    -ms-flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: 80px 30px 1fr;
+    align-items: center;
+
+    &:after {
+      content: '';
+      width: 95%;
+      height: 1px;
+      position: absolute;
+      background: $white;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      opacity: 0.3;
+      box-shadow: 1px 1px 0 1px rgba(0,0,0,0.1);
+    }
+  }
+
+  &__displayWeather {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 0;
+
+    .weather__degrees {
+      font-family: $monteserratLight;
+      @include typography(25, 25, 320, 2000);
+      line-height: 30px;
+      margin-bottom: 0;
+    };
+
+    .weather__icon {
+      max-width: 80px;
       margin: 0;
     }
   }
 
-  h1 {
-    color: #fff;
-    font-size: 32px;
+  &__weekDetail {
+    display: none;
+    margin-top: 30px;
+    /* margin-right: 50%; */
+    width: 100%;
+    grid-column: span 3;
+    display: flex;
+    justify-content: space-around;
+
+    small {
+      letter-spacing: 0.6px;
+    }
   }
 
-  h2 {
-    color: #fff;
-    font-size: 20px;
+  &__weeklyName {
+    display: inline-block;
+    font-family: $monteserratMedium;
+    @include typography(12, 16, 320, 2000);
   }
 
-  time {
-    color: #fff;
-    font-size: 12px;
+  &__weeklyMax,
+  &__weeklyMin {
+    position: relative;
+    text-align: left;
   }
 
+  &__weekWind {}
 
+  &__weekHumidity {}
+
+  &__dailyDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  &__dailyDetailsContainer {
+    width: 33.3%;
+    margin-right: 5px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+    padding: 10px 20px;
+  }
+
+  &__weeklyTemperatureContainer {
+    // flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__weeklyTemperatureContainer--status {
+    // flex: 1;
+    // text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__atmosphereName {
+    font-family: $monteserratRegular;
+    @include typography(12, 14, 320, 2000);
+  }
+ 
+  &__atmosphereNumbers {
+    @include typography(12, 14, 320, 2000);
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 0;
+    display: block;
+
+    span {
+      @include typography(12, 16, 320, 2000);
+      line-height: 30px;
+    }
+  }
+
+  &__weeklyIcon {
+    max-width: 26px;
+  }
+
+  .js-arrowUp {
+    display: none;
+  }
+
+  .weekRain,
+  .weekWind {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: $white;
+      right: 50px;
+      top: 0;
+      transform: translateY(50%);
+    }
+  }
 }
